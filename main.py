@@ -6,14 +6,14 @@ def get_exchange_rate(base_currency, target_currency):
     data = response.json()
     return data['rates'][target_currency]
 
-base = "USD"
-target = "EUR"
-rate = get_exchange_rate(base, target)
-print(f"Le taux de change de {base} à {target} est {rate}")
 
-def convert_currency(amount, base_currency, target_currency):
+def main():
+    amount = float(input("Entrez le montant à convertir : "))
+    base_currency = input("Entrez la devise de base (ex: EUR) : ").upper()
+    target_currency = input("Entrez la devise cible (ex: MRU) : ").upper()
     rate = get_exchange_rate(base_currency, target_currency)
-    return amount * rate
-amount = 100
-converted_amount = convert_currency(amount, "USD", "EUR")
-print(f"{amount} USD équivaut à {converted_amount} EUR")
+    converted_amount = amount * rate
+    print(f"{amount} {base_currency} équivaut à {converted_amount:.2f} {target_currency}")
+
+if __name__ == "__main__":
+    main()
